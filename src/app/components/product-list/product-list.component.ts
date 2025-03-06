@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
@@ -10,18 +10,22 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
   products: any[] = [];
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe(products => {
-      this.products = products;
+    this.productService.getProducts().subscribe(data => {
+      this.products = data;
     });
   }
 
   viewDetails(product: any): void {
-    this.router.navigate(['/product', product.id]);
+    if (product && product.id) {
+      this.router.navigate(['/product', product.id]);
+    } else {
+      console.error('Product ID is undefined');
+    }
   }
 }
