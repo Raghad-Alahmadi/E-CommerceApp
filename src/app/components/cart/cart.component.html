@@ -1,0 +1,10 @@
+<div class="cart">
+    <h2>Shopping Cart</h2>
+    <div *ngIf="cartItems.length === 0">Your cart is empty.</div>
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <h3>{{ item.name }}</h3>
+      <p>{{ item.description }}</p>
+      <p><strong>Price:</strong> ${{ item.price }}</p>
+    </div>
+    <button (click)="clearCart()">Clear Cart</button>
+  </div>

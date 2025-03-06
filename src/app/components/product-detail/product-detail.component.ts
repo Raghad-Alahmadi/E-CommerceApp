@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,19 +14,27 @@ import { ProductService } from '../../services/product.service';
 export class ProductDetailComponent implements OnInit {
   product: any;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productService: ProductService,
+    private cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
-    console.log('Product ID:', productId); 
     if (productId) {
       this.productService.getProductById(productId).subscribe(product => {
-        console.log('Fetched Product:', product); 
         this.product = product;
       }, error => {
         console.error('Error fetching product details:', error);
       });
     }
+  }
+
+  addToCart(): void {
+    this.cartService.addToCart(this.product);
+    alert('Product added to cart!');
   }
 
   goBack(): void {
