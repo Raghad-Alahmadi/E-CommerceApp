@@ -1,4 +1,10 @@
-.product-detail {
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin: 20px;
+  }
+  
+  .product-detail {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -6,7 +12,7 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     max-width: 800px;
-    margin: 20px auto; 
+    margin: 20px auto;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
@@ -32,11 +38,11 @@
   }
   
   .product-image {
-    width: 300px; 
-    height: 300px; 
+    width: 300px;
+    height: 300px;
     border-radius: 8px;
-    object-fit: cover; 
-    overflow: hidden; 
+    object-fit: cover;
+    overflow: hidden;
   }
   
   .add-to-cart-button, .back-button {

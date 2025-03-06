@@ -13,6 +13,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class ProductDetailComponent implements OnInit {
   product: any;
+  errorMessage: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,11 +25,16 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit(): void {
     const productId = Number(this.route.snapshot.paramMap.get('id'));
     if (productId) {
-      this.productService.getProductById(productId).subscribe(product => {
-        this.product = product;
-      }, error => {
-        console.error('Error fetching product details:', error);
-      });
+      this.productService.getProductById(productId).subscribe(
+        product => {
+          this.product = product;
+          this.errorMessage = null;
+        },
+        error => {
+          this.errorMessage = error;
+          console.error('Error fetching product details:', error);
+        }
+      );
     }
   }
 
