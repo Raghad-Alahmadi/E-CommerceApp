@@ -1,0 +1,97 @@
+/* Apply a gradient background to the entire page */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2); /* Soft gradient */
+    min-height: 100vh; /* Ensures the gradient covers the entire viewport */
+  }
+  
+  /* Optional: Add a subtle pattern overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent),
+                radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 50px 50px;
+    background-size: 100px 100px;
+    opacity: 0.1; /* Very subtle pattern */
+    pointer-events: none; /* Ensures it doesn't interfere with clicks */
+    z-index: -1;
+  }
+  
+  /* Navigation styling */
+  .main-nav {
+    background: linear-gradient(90deg, #3498db, #8e44ad); /* Matching gradient */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .nav-container {
+    display: flex;
+    justify-content: space-between; /* Space between Home and Cart */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .nav-link {
+    color: #ffffff; /* White text */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+  }
+  
+  .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+    transform: translateY(-2px);
+  }
+  
+  .nav-link:active {
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly darker on click */
+  }
+  
+  /* Cart link styling */
+  .cart-link {
+    margin-left: auto; /* Pushes the cart link to the far right */
+  }
+  
+  /* Active route styling */
+  .nav-link.active-link {
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    font-weight: 600;
+  }
+  
+  /* Router outlet styling */
+  router-outlet {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Optional: Add a subtle animation for the router outlet */
+  router-outlet {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

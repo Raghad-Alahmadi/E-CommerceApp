@@ -31,3 +31,10 @@ C:\Users\ahuevo nice\Desktop\E-CommerceApp\obj\Debug\net9.0\refint\E-CommerceApp
 C:\Users\ahuevo nice\Desktop\E-CommerceApp\obj\Debug\net9.0\E-CommerceApp.pdb
 C:\Users\ahuevo nice\Desktop\E-CommerceApp\obj\Debug\net9.0\E-CommerceApp.genruntimeconfig.cache
 C:\Users\ahuevo nice\Desktop\E-CommerceApp\obj\Debug\net9.0\ref\E-CommerceApp.dll
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\bin\Debug\net9.0\angular.json
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\bin\Debug\net9.0\package-lock.json
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\bin\Debug\net9.0\package.json
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\bin\Debug\net9.0\tsconfig.app.json
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\bin\Debug\net9.0\tsconfig.json
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\bin\Debug\net9.0\tsconfig.spec.json
+C:\Users\ahuevo nice\Desktop\E-CommerceApp\obj\Debug\net9.0\E-CommerceApp.sourcelink.json
