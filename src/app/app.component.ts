@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -7,7 +7,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, HttpClientModule, ProductListComponent],
+  imports: [RouterOutlet, RouterModule, CommonModule, HttpClientModule, ProductListComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
