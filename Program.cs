@@ -45,13 +45,15 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast");
 
 // New products endpoint
+
+
 var products = new[]
 {
-    new { Name = "Laptop", Description = "A high-performance laptop", Price = 999.99, Image = "https://m.media-amazon.com/images/I/61LdecwlWYL.jpg" },
-    new { Name = "Smartphone", Description = "A latest model smartphone", Price = 699.99, Image = "shttps://m.media-amazon.com/images/I/619f09kK7tL._AC_UF1000,1000_QL80_.jpg" },
-    new { Name = "Tablet", Description = "A lightweight tablet", Price = 399.99, Image = "https://m.media-amazon.com/images/I/61kwL1sJywL.jpg" },
-    new { Name = "Smartwatch", Description = "A smartwatch with various features", Price = 199.99, Image = "https://m.media-amazon.com/images/I/61yEHZXdi6L.jpg" },
-    new { Name = "Headphones", Description = "Noise-cancelling headphones", Price = 149.99, Image = "https://m.media-amazon.com/images/I/71St1R5DFGL._AC_UF1000,1000_QL80_.jpg" }
+    new { Id = 1, Name = "Laptop", Description = "A high-performance laptop", Price = 999.99, Image = "https://m.media-amazon.com/images/I/61LdecwlWYL.jpg" },
+    new { Id = 2, Name = "Smartphone", Description = "A latest model smartphone", Price = 699.99, Image = "https://m.media-amazon.com/images/I/619f09kK7tL._AC_UF1000,1000_QL80_.jpg" },
+    new { Id = 3, Name = "Tablet", Description = "A lightweight tablet", Price = 399.99, Image = "https://m.media-amazon.com/images/I/61kwL1sJywL.jpg" },
+    new { Id = 4, Name = "Smartwatch", Description = "A smartwatch with various features", Price = 199.99, Image = "https://m.media-amazon.com/images/I/61yEHZXdi6L.jpg" },
+    new { Id = 5, Name = "Headphones", Description = "Noise-cancelling headphones", Price = 149.99, Image = "https://m.media-amazon.com/images/I/71St1R5DFGL._AC_UF1000,1000_QL80_.jpg" }
 };
 
 app.MapGet("/api/products", () =>
@@ -60,8 +62,18 @@ app.MapGet("/api/products", () =>
 })
 .WithName("GetProducts");
 
-app.Run();
+app.MapGet("/api/products/{id}", (int id) =>
+{
+    var product = products.FirstOrDefault(p => p.Id == id);
+    if (product == null)
+    {
+        return Results.NotFound();
+    }
+    return Results.Ok(product);
+})
+.WithName("GetProductById");
 
+app.Run();
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);

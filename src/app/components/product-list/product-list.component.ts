@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -11,9 +12,8 @@ import { ProductService } from '../../services/product.service';
 })
 export class ProductListComponent implements OnInit {
   products: any[] = [];
-  selectedProduct: any = null;
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(data => {
@@ -22,12 +22,10 @@ export class ProductListComponent implements OnInit {
   }
 
   viewDetails(product: any): void {
-    console.log('Viewing details for', product);
-    this.selectedProduct = product;
-    console.log('Selected product:', this.selectedProduct);
-  }
-
-  closeDetails(): void {
-    this.selectedProduct = null;
+    if (product && product.id) {
+      this.router.navigate(['/product', product.id]);
+    } else {
+      console.error('Product ID is undefined');
+    }
   }
 }

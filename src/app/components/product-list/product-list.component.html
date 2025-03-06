@@ -1,17 +1,10 @@
-<div *ngFor="let product of products" class="product">
-    <h2>{{ product.name }}</h2>
-    <p>{{ product.price }}</p>
-    <button (click)="viewDetails(product)">View Details</button>
-  </div>
-  
-  <!-- Modal for displaying product details -->
-  <div *ngIf="selectedProduct" class="modal">
-    <div class="modal-content">
-      <span class="close" (click)="closeDetails()">&times;</span>
-      <h2>Product Details</h2>
-      <p><strong>Name:</strong> {{ selectedProduct.name }}</p>
-      <p><strong>Description:</strong> {{ selectedProduct.description }}</p>
-      <p><strong>Price:</strong> {{ selectedProduct.price }}</p>
-      <img [src]="selectedProduct.image" alt="{{ selectedProduct.name }}" />
+<div class="product-list">
+    <div *ngFor="let product of products" class="product">
+      <img class="product-image" [src]="product.image" alt="{{ product.name }}" />
+      <div class="product-info">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <p class="product-price">${{ product.price }}</p>
+        <button class="view-details-button" (click)="viewDetails(product)">View Details</button>
+      </div>
     </div>
   </div>
